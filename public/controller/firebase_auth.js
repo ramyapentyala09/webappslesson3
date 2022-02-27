@@ -14,8 +14,8 @@ export function addEventListeners() {
 
     Elements.formSignIn.addEventListener('submit', async e => {
         e.preventDefault();
-        const email = e.target.email;
-        const password = e.target.password;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
         const button = e.target.getElementsByTagName('button')[0];
         const label = Util.disableButton(button);
         try {

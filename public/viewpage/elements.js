@@ -3,6 +3,8 @@ export const MENU = {
     Home: document.getElementById('menu-home'),
     Purchases: document.getElementById('menu-purchases'),
     SignOut: document.getElementById('menu-signout'),
+    Cart: document.getElementById('menu-cart'),
+    Profile: document.getElementById('menu-profile'),
 }
 export const formSignIn = document.getElementById('form-signin');
 export const modalInfobox = {
