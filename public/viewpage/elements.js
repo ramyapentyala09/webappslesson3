@@ -1,3 +1,5 @@
+export const root = document.getElementById('root');
+
 export const MENU = {
     SignIn: document.getElementById('menu-signin'),
     Home: document.getElementById('menu-home'),
