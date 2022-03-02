@@ -17,10 +17,10 @@ export async function home_page() {
     let html = '<h1>Enjoy Shopping!</h1>'
     let products;
     try {
-products = await getProductList();
+        products = await getProductList();
     } catch (e) {
-if (DEV) console.log(e);
-Util.info('Failed to get the product list', JSON.stringify(e));
+        if (DEV) console.log(e);
+        Util.info('Failed to get the product list', JSON.stringify(e));
     }
     for (let i = 0; i < products.length; i++) {
         html += buildProductView(products[i], i);
@@ -31,25 +31,25 @@ Util.info('Failed to get the product list', JSON.stringify(e));
 function buildProductView(product, index) {
     return `
     <div class="card" style="width: 18rem; display: inline-block;">
-  <img src="${product.imageURL}" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">${product.name}</h5>
-    <p class="card-text">
-    ${Util.currency(product.price)}<br>
-    ${product.summary}
-    </p>
-    <div class="container ${currentUser ? 'd-block' : 'd-none'}">
-<form method="post" class="form-product-qty">
-<input type="hidden" name="index" value="${index}">
-<button class="btn btn-outline-danger" type="submit"
-onclick="this.form.submitter='DEC'">&minus;</button>
-<div>
-${product.qty == null || product.qty == 0 ? 'Add' : product.qty}
-</div>
-<button class="btn btn-outline-danger" type="submit"
-onclick="this.form.submitter='INC'">&plus;</button>
-</form>
-</div>
+        <img src="${product.imageURL}" class="card-img-top">
+        <div class="card-body">
+             <h5 class="card-title">${product.name}</h5>
+             <p class="card-text">
+                ${Util.currency(product.price)}<br>
+                ${product.summary}
+             </p>
+        <div class="container pt-3 bg-light ${currentUser ? 'd-block' : 'd-none'}">
+            <form method="post" class="form-product-qty">
+                <input type="hidden" name="index" value="${index}">
+                <button class="btn btn-outline-danger" type="submit"
+                    onclick="this.form.submitter='DEC'">&minus;</button>
+                <div class="container rounded text-center text-white bg-primary d-inline-block w-50">
+                    ${product.qty == null || product.qty == 0 ? 'Add' : product.qty}
+                </div>
+                <button class="btn btn-outline-danger" type="submit"
+                    onclick="this.form.submitter='INC'">&plus;</button>
+            </form>
+        </div>
   </div>
 </div>
     `;
