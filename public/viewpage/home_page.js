@@ -3,6 +3,7 @@ import { ROUTE_PATHNAMES } from "../controller/route.js";
 import * as Util from './util.js'
 import { getProductList } from "../controller/firestore_controller.js";
 import { DEV } from "../model/constants.js";
+import { currentUser } from "../controller/firebase_auth.js";
 
 export function addEventListeners() {
     MENU.Home.addEventListener('click', async () => {
@@ -37,6 +38,18 @@ function buildProductView(product, index) {
     ${Util.currency(product.price)}<br>
     ${product.summary}
     </p>
+    <div class="container ${currentUser ? 'd-block' : 'd-none'}">
+<form method="post" class="form-product-qty">
+<input type="hidden" name="index" value="${index}">
+<button class="btn btn-outline-danger" type="submit"
+onclick="this.form.submitter='DEC'">&minus;</button>
+<div>
+${product.qty == null || product.qty == 0 ? 'Add' : product.qty}
+</div>
+<button class="btn btn-outline-danger" type="submit"
+onclick="this.form.submitter='INC'">&plus;</button>
+</form>
+</div>
   </div>
 </div>
     `;
