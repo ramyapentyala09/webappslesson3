@@ -4,6 +4,7 @@ import * as Util from './util.js'
 import { getProductList } from "../controller/firestore_controller.js";
 import { DEV } from "../model/constants.js";
 import { currentUser } from "../controller/firebase_auth.js";
+import { cart } from "./cart_page.js";
 
 export function addEventListeners() {
     MENU.Home.addEventListener('click', async () => {
@@ -18,6 +19,12 @@ export async function home_page() {
     let products;
     try {
         products = await getProductList();
+        if (cart && cart.getTotalQty() !=0) {
+            cart.items.forEach(item => {
+                const p = products.find(e => e.docId == item.docId);
+                if (p) p.qty = item.qty;
+            });
+        }
     } catch (e) {
         if (DEV) console.log(e);
         Util.info('Failed to get the product list', JSON.stringify(e));
@@ -26,6 +33,27 @@ export async function home_page() {
         html += buildProductView(products[i], i);
     }
     root.innerHTML = html;
+    const productForms = document.getElementsByClassName('form-product-qty');
+    for (let i = 0; i < productForms.length; i++) {
+        productForms[i].addEventListener('submit', e => {
+e.preventDefault();
+const p = products[e.target.index.value];
+const submitter = e.target.submitter;
+if (submitter == 'DEC') {
+cart.removeItem(p);
+if (p.qty > 0) --p.qty;
+} else if (submitter == 'INC') {
+cart.addItem(p);
+p.qty = p.qty == null ? 1 : p.qty + 1;
+} else {
+    if (DEV) console.log(e);
+    return;
+}
+const updateQty = (p.qty == null || p.qty == 0) ? 'Add' : p.qty;
+document.getElementById(`item-count-${p.docId}`).innerHTML = updateQty;
+      MENU.CartItemCount.innerHTML = `${cart.getTotalQty()}`;  
+});
+    }
 
 }
 function buildProductView(product, index) {
@@ -43,7 +71,8 @@ function buildProductView(product, index) {
                 <input type="hidden" name="index" value="${index}">
                 <button class="btn btn-outline-danger" type="submit"
                     onclick="this.form.submitter='DEC'">&minus;</button>
-                <div class="container rounded text-center text-white bg-primary d-inline-block w-50">
+                <div id="item-count-${product.docId}"
+                class="container rounded text-center text-white bg-primary d-inline-block w-50">
                     ${product.qty == null || product.qty == 0 ? 'Add' : product.qty}
                 </div>
                 <button class="btn btn-outline-danger" type="submit"
