@@ -5,7 +5,6 @@ import { currentUser } from "../controller/firebase_auth.js";
 import { info, disableButton,enableButton } from "./util.js";
 import { DEV } from "../model/constants.js";
 import { uploadProfilePhoto } from "../controller/storage_controller.js";
-
 export let accountInfo = null;
 
 export function addEventListeners() {

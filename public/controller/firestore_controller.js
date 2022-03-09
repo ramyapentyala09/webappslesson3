@@ -17,7 +17,6 @@ import { Product } from "../model/product.js";
 import { ShoppingCart } from "../model/shopping_cart.js";
 import { AccountInfo } from "../model/account_info.js";
 const db = getFirestore();
-
 export async function getProductList() {
     const products = [];
     const q = query(collection(db, COLLECTION_NAMES.PRODUCT), orderBy('name'));
@@ -30,12 +29,10 @@ export async function getProductList() {
     });
     return products;
 }
-
 export async function checkout(cart) {
     const data = cart.serialize(Date.now());
     await addDoc(collection(db, COLLECTION_NAMES.PURCHASE_HISTORY), data);
 }
-
 export async function getPurchaseHistory(uid){
     const q = query(collection(db, COLLECTION_NAMES.PURCHASE_HISTORY), 
         where('uid', '==', uid), 

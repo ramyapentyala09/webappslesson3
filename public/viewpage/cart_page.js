@@ -6,7 +6,6 @@ import { currency, disableButton, enableButton, info } from "./util.js";
 import { home_page } from "./home_page.js";
 import { DEV } from "../model/constants.js";
 import { checkout } from "../controller/firestore_controller.js";
-
 export function addEventListeners() {
     MENU.Cart.addEventListener('click', async () => {
         history.pushState(null, null, ROUTE_PATHNAMES.CART);
@@ -14,7 +13,6 @@ export function addEventListeners() {
     });
 }
 export let cart;
-
 export async function cart_page() {
     if (!currentUser) {
         root.innerHTML = '<h1>Protected Page</h1>'

@@ -14,7 +14,6 @@ export function addEventListeners() {
         Util.enableButton(MENU.Home, label);
     });
 }
-
 export async function home_page() {
     let html = '<h1>Enjoy Shopping!</h1>'
     let products;

@@ -9,13 +9,11 @@ export const MENU = {
     Profile: document.getElementById('menu-profile'),
     CartItemCount: document.getElementById('menu-cart-item-count'),
 }
-
 export const modalInfobox = {
     modal: new bootstrap.Modal(document.getElementById('modal-infobox'), {backdrop: 'static'}),
     title: document.getElementById('modal-infobox-title'),
     body: document.getElementById('modal-infobox-body'),
 }
-
 export const modalTransaction = {
     modal: new bootstrap.Modal(document.getElementById('modal-transaction'), {backdrop: 'static'}),
     title: document.getElementById('modal-transaction-title'),

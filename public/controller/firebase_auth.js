@@ -4,9 +4,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js"
 
 import * as Elements from '../viewpage/elements.js'
-import * as Util from '../viewpage/util.js'
 import { DEV } from "../model/constants.js";
 import { routing, ROUTE_PATHNAMES } from "./route.js";
+import * as Util from '../viewpage/util.js'
 import { initShoppingCart } from "../viewpage/cart_page.js";
 import { readAccountProfile } from "../viewpage/profile_page.js";
 
