@@ -8,8 +8,8 @@ export const ROUTE_PATHNAMES = {
     PURCHASES: '/purchases',
     PROFILE: '/profile',
     CART: '/cart',
-
 }
+
 export const routes = [
     {pathname: ROUTE_PATHNAMES.HOME, page: home_page},
     {pathname: ROUTE_PATHNAMES.PURCHASES, page: purchases_page},

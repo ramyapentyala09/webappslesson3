@@ -16,6 +16,7 @@ window.onload = () => {
     const hash = window.location.hash;
     routing(pathname, hash);
 }
+
 window.addEventListener('popstate', e => {
     e.preventDefault();
     const pathname = e.target.location.pathname;

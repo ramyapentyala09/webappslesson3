@@ -1,6 +1,6 @@
+import * as Util from './util.js'
 import { MENU, root } from "./elements.js";
 import { ROUTE_PATHNAMES } from "../controller/route.js";
-import * as Util from './util.js'
 import { getProductList } from "../controller/firestore_controller.js";
 import { DEV } from "../model/constants.js";
 import { currentUser } from "../controller/firebase_auth.js";
@@ -14,6 +14,7 @@ export function addEventListeners() {
         Util.enableButton(MENU.Home, label);
     });
 }
+
 export async function home_page() {
     let html = '<h1>Enjoy Shopping!</h1>'
     let products;
@@ -49,6 +50,7 @@ p.qty = p.qty == null ? 1 : p.qty + 1;
     if (DEV) console.log(e);
     return;
 }
+
 const updateQty = (p.qty == null || p.qty == 0) ? 'Add' : p.qty;
 document.getElementById(`item-count-${p.docId}`).innerHTML = updateQty;
       MENU.CartItemCount.innerHTML = `${cart.getTotalQty()}`;  
@@ -56,6 +58,7 @@ document.getElementById(`item-count-${p.docId}`).innerHTML = updateQty;
     }
 
 }
+
 function buildProductView(product, index) {
     return `
     <div class="card" style="width: 18rem; display: inline-block;">

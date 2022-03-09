@@ -18,7 +18,7 @@
   <div class="my-banner">The Amazing Online Store</div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,8 +26,8 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item modal-preauth">
-            <button id="menu-signin" class="btn btn-outline-danger"
-            data-bs-toggle="modal" data-bs-target="#modal-signin">Sign In/Up</button>
+            <button id="menu-signin" class="btn btn-outline-danger" data-bs-toggle="modal"
+              data-bs-target="#modal-signin">Sign In/Up</button>
           </li>
           <li class="nav-item">
             <button id="menu-home" class="btn btn-outline-primary">Home</button>
@@ -38,16 +38,17 @@
           <li class="nav-item modal-postauth">
             <button id="menu-signout" class="btn btn-outline-danger">Sign Out</button>
           </li>
-          </ul>
-          <button id="menu-cart" class="btn btn-outline-success modal-postauth">
-            <img src="images/cart.png" width="30px"> (<span id="menu-cart-item-count">0</span>)
-          </button>
-          <button id="menu-profile" class="btn btn-outline-success modal-postauth">Profile</button>
+        </ul>
+        <button id="menu-cart" class="btn btn-outline-success modal-postauth">
+          <img src="images/cart.png" width="30px"> (<span id="menu-cart-item-count">0</span>)
+        </button>
+        <button id="menu-profile" class="btn btn-outline-success modal-postauth">Profile</button>
       </div>
     </div>
   </nav>
-    <!-- Modal: popup infobox -->
-    <div class="modal fade" id="modal-infobox" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+
+  <!-- Modal: popup infobox -->
+  <div class="modal fade" id="modal-infobox" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="modal-infobox-title" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -62,8 +63,8 @@
     </div>
   </div>
 
-    <!-- Modal: Sign In Form -->
-    <div class="modal fade" id="modal-signin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <!-- Modal: Sign In Form -->
+  <div class="modal fade" id="modal-signin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="modal-signin-title" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -84,12 +85,59 @@
               <button type="submit" class="btn btn-outline-primary">Sign In</button>
             </div>
           </form>
+          <div class="mt-5">
+            No account yet?
+            <button id="button-show-signup-modal" class="btn btn-outline-info">Create New Account</button>
+          </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
-    <div id="root" class="bg-light p-5 m-3"></div>
+  <!-- Modal: Sign Up -->
+  <div class="modal fade" id="modal-signup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="model-signup-title" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-signup-title">Create New Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="modal-signup-form" method="post">
+            <div>
+              <input type="email" name="email" placeholder="email address" required>
+            </div>
+            <div>
+              <input type="password" name="password" placeholder="password" required minlength="6">
+            </div>
+            <div>
+              <input type="password" name="passwordConfirm" placeholder="confirm password" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Transaction - purchase history -->
+  <div class="modal fade" id="modal-transaction" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modal-transaction-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-transaction-title"></h5>
+        </div>
+        <div class="modal-body" id="modal-transaction-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="root" class="bg-light p-5 m-3"></div>
 
   <script type="module">
 
@@ -112,8 +160,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>
